@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queue Ticket Generator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="ticket">
+            <h1>Inga Beauty Salon</h1>
+            <h2 id="number">1</h2> <!-- The ticket number will be here -->
+            <p id="date">Date:</p> <!-- The date will be shown here -->
+            <p id="service">Service:</p> <!-- The service will be shown here -->
+            <p id="staff">Staff:</p> <!-- The staff name will be shown here -->
+        </div>
+        <div class="input-group">
+            <input type="text" id="serviceInput" placeholder="Service (optional)">
+            <input type="text" id="staffInput" placeholder="Staff (optional)">
+        </div>
+        <div class="button-group">
+            <button class="btn" onclick="generateTicket()">Generate Ticket</button>
+            <button class="btn" onclick="printTicket()">Print Ticket</button>
+            <button class="btn" onclick="resetTicketNumber()">Reset Number</button>
+            <input type="number" id="ticketToReprint" min="1" max="200" placeholder="Ticket to Reprint">
+            <button class="btn" onclick="reprintTicket()">Reprint Ticket</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
