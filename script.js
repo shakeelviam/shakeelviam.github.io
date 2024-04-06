@@ -1,45 +1,55 @@
 let ticketNumber = 1;
+let ticketsPrinted = {}; // Object to store all printed tickets
 
 function generateTicket() {
-    updateTicket(ticketNumber);
-    ticketNumber++;
+    const service = document.getElementById('serviceInput').value;
+    const staff = document.getElementById('staffInput').value;
+    const date = formatDate(new Date());
+
+    // Store the ticket details in an object
+    ticketsPrinted[ticketNumber] = { service, staff, date };
+
+    // Update and print the ticket
+    updateAndPrint(ticketNumber, date, service, staff);
+
+    // Clear the input fields
+    document.getElementById('serviceInput').value = '';
+    document.getElementById('staffInput').value = '';
+
+    ticketNumber++; // Increment the ticket number
 }
 
 function reprintTicket() {
-    let ticketToReprint = document.getElementById('ticketToReprint').value;
-    updateTicket(ticketToReprint);
+    const ticketToReprint = document.getElementById('ticketToReprint').value;
+    const ticketDetails = ticketsPrinted[ticketToReprint];
+
+    if (ticketDetails) {
+        updateAndPrint(ticketToReprint, ticketDetails.date, ticketDetails.service, ticketDetails.staff);
+    } else {
+        alert('Ticket number not found.');
+    }
 }
 
 function resetTicketNumber() {
-    ticketNumber = 1;
-    updateTicket(ticketNumber);
+    if (confirm('This will reset the ticket number to 1. Are you sure?')) {
+        ticketNumber = 1;
+        ticketsPrinted = {}; // Clear stored tickets
+        console.log('Ticket number has been reset.');
+    }
 }
 
-function updateTicket(number) {
+function updateAndPrint(number, date, service, staff) {
     document.getElementById('number').textContent = number;
-    document.getElementById('date').textContent = 'Date: ' + formatDate(new Date());
-    let service = document.getElementById('serviceInput').value;
-    document.getElementById('service').textContent = 'Service: ' + (service ? service : 'Not specified');
-    let staff = document.getElementById('staffInput').value;
-    document.getElementById('staff').textContent = 'Staff: ' + (staff ? staff : 'Not assigned');
+    document.getElementById('date').textContent = 'Date: ' + date;
+    document.getElementById('service').textContent = 'Service: ' + (service || 'Not specified');
+    document.getElementById('staff').textContent = 'Staff: ' + (staff || 'Not assigned');
+    
+    window.print(); // Trigger the browser's print functionality
 }
 
 function formatDate(date) {
-    let day = ('0' + date.getDate()).slice(-2);
-    let month = ('0' + (date.getMonth() + 1)).slice(-2);
+    let day = String(date.getDate()).padStart(2, '0');
+    let month = String(date.getMonth() + 1).padStart(2, '0');
     let year = date.getFullYear();
     return `${day}/${month}/${year}`;
-}
-
-function printTicket() {
-    let content = document.getElementById('ticket').innerHTML;
-    let printWindow = window.open('', '_blank', 'height=600,width=800');
-    printWindow.document.write('<html><head><title>Print</title>');
-    printWindow.document.write('<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">');
-    printWindow.document.write('<link rel="stylesheet" href="print.css" type="text/css" media="print">'); // Include print.css for print-specific styles
-    printWindow.document.write('</head><body class="bg-white text-black">'); // Ensure the background is white and text is black for printing
-    printWindow.document.write(content);
-    printWindow.document.write('</body></html>');
-    printWindow.document.close();
-    printWindow.print();
 }
