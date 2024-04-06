@@ -11,9 +11,9 @@
 
     <div class="container bg-white text-black p-8 rounded-lg shadow-lg">
         <div id="ticket" class="text-center">
-            <img src="inga_logo.png" alt="Inga Beauty Salon Logo" class="mx-auto mb-5 w-28 h-auto" />
+            <img src="images/inga_logo.png" alt="Inga Beauty Salon Logo" class="mx-auto mb-5 w-28 h-auto" />
 
-            <h2 id="number" class="print:text-5xl text-5xl font-bold mb-4 print:border-2 print:border-black print:rounded-full ...">1</h2>
+            <h2 id="number" class="text-5xl font-bold mb-4">1</h2>
             <p id="date" class="mb-2">Date:</p>
             <p id="service" class="mb-2">Service:</p>
             <p id="staff" class="mb-2">Staff:</p>
@@ -24,24 +24,14 @@
             <input type="text" id="staffInput" placeholder="Staff (optional)" class="p-2 mb-2 rounded">
         </div>
         <div class="button-group flex flex-col mt-4">
-            <button class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2" onclick="generateTicket()">Generate Ticket</button>
-            <button class="btn bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-2" onclick="printTicket()">Print Ticket</button>
+            <button class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2" onclick="generateTicket()">Generate and Print Ticket</button>
             <button class="btn bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-2" onclick="resetTicketNumber()">Reset Number</button>
             <input type="number" id="ticketToReprint" min="1" max="200" placeholder="Ticket to Reprint" class="p-2 mb-2 rounded">
             <button class="btn bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded" onclick="reprintTicket()">Reprint Ticket</button>
         </div>
-        <div class="print:block hidden">
-            <div id="ticket" class="text-center mx-auto p-10">
-                <img src="images/inga_logo.png" alt="Inga Beauty Salon Logo" class="mx-auto mb-5 print:max-w-xs w-32" />
-                <h2 id="number" class="text-5xl font-bold mb-5 print:text-4xl border-2 border-black rounded-full p-5 inline-block">1</h2>
-                <p id="date" class="text-lg mb-2">Date: </p>
-                <p id="service" class="text-lg mb-2">Service: Not specified</p>
-                <p id="staff" class="text-lg mb-2">Staff: Not assigned</p>
-            </div>
-        </div>
-        
+
         <!-- Your scripts here -->
         <script src="script.js"></script>
-        </body>
-        </html>
-   
+    </div>
+</body>
+</html>
