@@ -15,16 +15,15 @@ body {
     border-radius: 0.5rem;
     width: 100%;
     max-width: 40rem; /* Adjust the max-width as needed for a wider container */
-    /* ... other styles ... */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Add shadow for better visibility */
 }
 
-
 #ticket {
-    position: relative;
     background-color: #fff; /* Set the ticket background to white */
     padding: 2rem;
     margin-top: 2rem;
     border-radius: 0.5rem;
+    text-align: center; /* Ensure ticket contents are centered */
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
@@ -36,7 +35,6 @@ body {
     margin-right: auto;
 }
 
-/* Center the ticket number and adjust its styling */
 #number {
     font-size: 4rem; /* Increase the size of the number */
     background-color: #007bff; /* Bootstrap's primary color */
@@ -47,23 +45,54 @@ body {
     width: 4em; /* Circle size */
     height: 4em; /* Circle size */
     line-height: 4em; /* Center the text line in the circle */
-    margin: 0 auto 1rem; /* Center the number below the logo and add margin */
-    position: static; /* Use static instead of absolute positioning */
+    margin: 1rem auto; /* Center the number below the logo and add margin */
 }
 
 .input-group, .button-group {
     margin-top: 1rem;
 }
 
-/* Custom styles for the buttons */
 .button-group button {
     width: 100%;
     margin-top: 0.5rem;
+    border: none; /* Remove border */
+    padding: 1rem; /* Add more padding */
+    cursor: pointer; /* Change cursor to pointer on hover */
 }
 
 /* Custom styles for inputs */
 .input-group input {
-    margin-top: 0.5rem;
+    width: 100%; /* Full width */
+    padding: 1rem; /* Add padding */
+    margin-top: 0.5rem; /* Margin on top */
+    border: 1px solid #ccc; /* Add border */
+    border-radius: 0.25rem; /* Slight rounding of corners */
 }
 
-/* Additional custom styles can be added here */
+/* Add more custom or responsive styles as needed */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        max-width: none;
+    }
+}
+
+@media print {
+    body {
+        background-color: #fff;
+    }
+    .container, .input-group, .button-group, #logo, #number, #date, #service, #staff {
+        box-shadow: none;
+        margin: 0;
+        width: auto;
+        color: black; /* Ensure print color is black */
+    }
+    #ticket {
+        border: 1px solid black; /* Add border for print version */
+        padding: 1rem;
+    }
+    #number {
+        background-color: #fff; /* White background for print version */
+        color: #000; /* Black color text for print version */
+    }
+}
